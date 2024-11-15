@@ -1,0 +1,37 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Página de Login</title>
+  <style>
+    #loginStatus.logged-out {
+      color: red;
+    }
+    #loginStatus.logged-in {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h2>Página de Login</h2>
+  <form id="loginForm">
+    <label for="username">Usuário:</label>
+    <input type="text" id="username" required>
+    <br>
+    <label for="password">Senha:</label>
+    <input type="password" id="password" required>
+    <br>
+    <button type="submit">Login</button>
+  </form>
+  
+  <p id="loginStatus" class="logged-out">Não logado</p>
+
+  <h2>Ações Protegidas</h2>
+  <button id="btnListarPerfis">Listar Perfis</button>
+  <button id="btnListarContratos">Listar Contratos Filtrados</button>
+  <button id="btnListarTodosContratos">Listar Todos os Contratos</button>
+  <button id="btnPerfilUsuario">Ver Perfil do Usuário</button>
+  <script src="auth.js"></script>
+</body>
+</html>

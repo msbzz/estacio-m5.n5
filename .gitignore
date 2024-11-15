@@ -1,0 +1,15 @@
+# Ignorar a pasta node_modules
+node_modules/
+
+# Ignorar a pasta temp e qualquer arquivo dentro dela
+temp/
+
+# Ignorar arquivos com "bkp" no nome
+*bkp*
+
+# Ignorar arquivos com "temp" no nome
+*temp*
+
+# Ignorar arquivos temporários
+*.tmp
+*.txt
