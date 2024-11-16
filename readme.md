@@ -81,7 +81,7 @@ Certifique-se de ter instalado:
 
 ## Testando as Rotas via Insomnia
 
-Para facilitar a interação com a API, utilizamos o Insomnia como ferramenta de teste. Configuramos uma variável de ambiente para o token, acessada através do atalho `CTRL + E` para criar e gerenciar ambientes no Insomnia.
+Por motivos pessoais, para a interação com a API, foi utilizado o Insomnia como ferramenta de teste. Aqui foi configurada uma variável de ambiente para o token, acessada através do atalho `CTRL + E` para criar e gerenciar ambientes no Insomnia.
 
 ### Configuração do Ambiente
 1. No Insomnia, acesse **Manage Environments** ou pressione `CTRL + E`.
@@ -102,6 +102,17 @@ Para facilitar a interação com a API, utilizamos o Insomnia como ferramenta de
 
     <img src="images/use environment token.png" alt="var token" width="500"/>
 
+
+### Mocks
+
+- **Usuários**
+<p>
+<img src="images/usuarios.png" alt="mock usuarios" width="500"/>
+
+-**Empresas**
+<p>
+<img src="images/empresas.png" alt="mock empresas" width="500"/>
+
 ### Endpoints usando insominia
 
 - **Login:**
@@ -109,8 +120,7 @@ Para facilitar a interação com a API, utilizamos o Insomnia como ferramenta de
   - Método: POST
   - Corpo: `{ "username": "admin", "password": "12345" }`
 
-  
-
+ 
 - **Listar Usuários:**
   - URL: `http://localhost:3000/api/users`
   - Método: GET
@@ -118,19 +128,35 @@ Para facilitar a interação com a API, utilizamos o Insomnia como ferramenta de
 
  <img src="images/listar usuarios.png" alt="listar usuarios" width="500"/>
 
-- **Filtro Empresa:**
-  - URL: `http://localhost:3000/api/contracts?empresa=Empresa1`
+- **Filtrar Empresas por nome :**
+  - URL: `http://localhost:3000/api/contracts` + (?empresa=Empresa1 ou ?empresa=Empre*)
   - Método: GET
   - Cabeçalho: `Authorization: Bearer {{token}}`
+  - parametro: Empresa1 ou Empre*
 
- <img src="images/filtro empresa.png" alt="filtro empresa" width="500"/>
+   - **Exato** <p>
+ <img src="images/filtro empresa.png" alt="filtro nome exato" width="500"/>
 
+
+   - **Aproximado** <p>
+ <img src="images/empresas filtro nome_02.png" alt="filtro nome aproximado" width="500"/>
+
+- **Filtrar Empresas por nome e data :**
+  - URL: `http://localhost:3000/api/contracts` + (?empresa=Empresa1 ou ?empresa=Empre*)
+  - Método: GET
+  - Cabeçalho: `Authorization: Bearer {{token}}`
+  - parametro1: Empresa1 ou Empre*
+  - parametro2: Data YYYY-MM-dd
+  <p>
+  <img src="images/empresas filtro data.png" alt="filtro data e nome" width="500"/>
+ 
 - **Listar Empresas:**
   - URL: `http://localhost:3000/api/contracts/all`
   - Método: GET
   - Cabeçalho: `Authorization: Bearer {{token}}`
 
  <img src="images/listar empresas.png" alt="todas empresas" width="500"/>
+
 
 - **Perfil do Usuário:**
   - URL: `http://localhost:3000/api/auth/profile`
@@ -151,16 +177,16 @@ Para facilitar a interação com a API, utilizamos o Insomnia como ferramenta de
 
 <img src="images/config expire token.png" alt="expire token" width="500"/>
 
-3. Permissionamentos
+3. Permissionamentos 
 
 Aqui está a tabela que representa o permissionamento para os perfis de usuários com base nas ações/endpoints:
 
-| **Usuário**      | **Lista usurios** | **Filtro por empresa** | **Listar Empresas** | **Perfil do Usuário** |
-|-------------------|-------------------------|--------------------------------------|-----------------------------------|-------------------------------|
-| **admin**         | ✔️                      | ✔️                                   | ✔️                                | ✔️                            |
-| **user1**         | ✔️                      | ❌                                   | ❌                                | ✔️                            |
-| **colab1**        | ❌                      | ❌                                   | ❌                                | ✔️                            |
-| **colab2**        | ❌                      | ❌                                   | ❌                                | ✔️                            |
+| **Usuário**      | **Senha** | **Lista Usuários** | **Filtro por Empresa** | **Listar Empresas** | **Perfil do Usuário** |
+|-------------------|-----------|--------------------|-------------------------|---------------------|------------------------|
+| **admin**         | 12345     | ✔️                 | ✔️                      | ✔️                  | ✔️                     |
+| **user1**         | u123      | ✔️                 | ❌                      | ❌                  | ✔️                     |
+| **colab1**        | c123      | ❌                 | ❌                      | ❌                  | ✔️                     |
+| **colab2**        | c456      | ❌                 | ❌                      | ❌                  | ✔️                     |
 
 ### Legenda
 - ✔️: Permissão concedida
